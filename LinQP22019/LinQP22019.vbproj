@@ -100,6 +100,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactosDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="AccesoDatos\DataAccess.vb" />
     <Compile Include="AccesoDatos\Numeros.vb">
       <DependentUpon>ContactosDB.tt</DependentUpon>
     </Compile>

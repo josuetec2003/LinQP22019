@@ -8,3 +8,8 @@
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.exe
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.xml
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.pdb
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.dll
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.SqlServer.dll
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.xml
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.SqlServer.xml
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.Form1.resources

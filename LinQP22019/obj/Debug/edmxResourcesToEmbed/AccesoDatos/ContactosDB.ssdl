@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContactosDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contacto">
+    <Key>
+      <PropertyRef Name="IdContacto" />
+    </Key>
+    <Property Name="IdContacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Numeros">
+    <Key>
+      <PropertyRef Name="IdNumero" />
+    </Key>
+    <Property Name="IdNumero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="char" MaxLength="9" />
+    <Property Name="IdOperadora" Type="int" />
+    <Property Name="IdContacto" Type="int" />
+  </EntityType>
+  <EntityType Name="Operadoras">
+    <Key>
+      <PropertyRef Name="IdOperadora" />
+    </Key>
+    <Property Name="IdOperadora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK_Numeros_Contacto1">
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="0..1" />
+    <End Role="Numeros" Type="Self.Numeros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto">
+        <PropertyRef Name="IdContacto" />
+      </Principal>
+      <Dependent Role="Numeros">
+        <PropertyRef Name="IdContacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Numeros_Operadoras1">
+    <End Role="Operadoras" Type="Self.Operadoras" Multiplicity="0..1" />
+    <End Role="Numeros" Type="Self.Numeros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operadoras">
+        <PropertyRef Name="IdOperadora" />
+      </Principal>
+      <Dependent Role="Numeros">
+        <PropertyRef Name="IdOperadora" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ContactosDBModelStoreContainer">
+    <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Numeros" EntityType="Self.Numeros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operadoras" EntityType="Self.Operadoras" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Numeros_Contacto1" Association="Self.FK_Numeros_Contacto1">
+      <End Role="Contacto" EntitySet="Contacto" />
+      <End Role="Numeros" EntitySet="Numeros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Numeros_Operadoras1" Association="Self.FK_Numeros_Operadoras1">
+      <End Role="Operadoras" EntitySet="Operadoras" />
+      <End Role="Numeros" EntitySet="Numeros" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
