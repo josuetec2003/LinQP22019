@@ -1,0 +1,10 @@
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\LinQP22019.exe.config
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\LinQP22019.exe
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\LinQP22019.pdb
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\LinQP22019.xml
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.vbprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.Resources.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.vbproj.GenerateResource.Cache
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.exe
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.xml
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.pdb
