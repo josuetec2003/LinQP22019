@@ -8,7 +8,7 @@ Public Class DataAccess
         ' Consulta
         ' select * from Contacto
         ' select nombre, apellido from contacto
-        Dim data
+        Dim data ' Crear una variable sin un tipo de dato
 
         If buscar = "" Then
             data = (From c In ctx.Contacto
@@ -50,5 +50,38 @@ Public Class DataAccess
         End Try
 
     End Function
+
+    Shared Function actualizarContacto(c As Contacto) As Boolean
+        Try
+            ' #1: Crear el objeto que sera actualizado
+            Dim con = (From cont In ctx.Contacto
+                       Where cont.IdContacto = c.IdContacto
+                       Select cont).SingleOrDefault()
+
+            ' #2: Actualizar los atributos del objeto del paso #1
+            con.Nombre = c.Nombre
+            con.Apellido = c.Apellido
+            con.Direccion = c.Direccion
+
+            ' #3: Guardar los cambios en la base de datos (sql server)
+            ctx.SaveChanges()
+            Return True ' Indicador de que se actualizo con exito
+
+        Catch ex As Exception
+            Return False ' Indicador de que ocurrio un error al actualizar
+        End Try
+    End Function
+
+    Shared Sub cargarNumeros(grid As DataGridView, idc As Integer)
+        Dim data = From nums In ctx.Numeros
+                   Where nums.IdContacto = idc
+                   Select nums.IdContacto, nums.Numero, nums.Operadoras.Nombre
+
+        grid.DataSource = data.ToList()
+        grid.Columns(0).Visible = False
+
+    End Sub
+
+
 
 End Class

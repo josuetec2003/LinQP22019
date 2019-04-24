@@ -33,7 +33,12 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
+        Me.btnEditar = New System.Windows.Forms.Button()
+        Me.btnNuevo = New System.Windows.Forms.Button()
+        Me.dgvNumeros = New System.Windows.Forms.DataGridView()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.dgvContactos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvNumeros, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvContactos
@@ -42,9 +47,11 @@ Partial Class Form1
         Me.dgvContactos.AllowUserToDeleteRows = False
         Me.dgvContactos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvContactos.Location = New System.Drawing.Point(292, 61)
+        Me.dgvContactos.MultiSelect = False
         Me.dgvContactos.Name = "dgvContactos"
+        Me.dgvContactos.ReadOnly = True
         Me.dgvContactos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvContactos.Size = New System.Drawing.Size(345, 223)
+        Me.dgvContactos.Size = New System.Drawing.Size(345, 151)
         Me.dgvContactos.TabIndex = 0
         '
         'txtBuscar
@@ -130,11 +137,56 @@ Partial Class Form1
         Me.btnEliminar.Text = "X"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
+        'btnEditar
+        '
+        Me.btnEditar.Image = Global.LinQP22019.My.Resources.Resources.pencil
+        Me.btnEditar.Location = New System.Drawing.Point(643, 102)
+        Me.btnEditar.Name = "btnEditar"
+        Me.btnEditar.Size = New System.Drawing.Size(44, 35)
+        Me.btnEditar.TabIndex = 11
+        Me.btnEditar.UseVisualStyleBackColor = True
+        '
+        'btnNuevo
+        '
+        Me.btnNuevo.Location = New System.Drawing.Point(100, 234)
+        Me.btnNuevo.Name = "btnNuevo"
+        Me.btnNuevo.Size = New System.Drawing.Size(154, 35)
+        Me.btnNuevo.TabIndex = 12
+        Me.btnNuevo.Text = "Nuevo contacto"
+        Me.btnNuevo.UseVisualStyleBackColor = True
+        '
+        'dgvNumeros
+        '
+        Me.dgvNumeros.AllowUserToAddRows = False
+        Me.dgvNumeros.AllowUserToDeleteRows = False
+        Me.dgvNumeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvNumeros.Location = New System.Drawing.Point(292, 251)
+        Me.dgvNumeros.MultiSelect = False
+        Me.dgvNumeros.Name = "dgvNumeros"
+        Me.dgvNumeros.ReadOnly = True
+        Me.dgvNumeros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvNumeros.Size = New System.Drawing.Size(345, 146)
+        Me.dgvNumeros.TabIndex = 13
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(285, 218)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(278, 31)
+        Me.Label5.TabIndex = 14
+        Me.Label5.Text = "Numeros del contacto"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(699, 312)
+        Me.ClientSize = New System.Drawing.Size(699, 410)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.dgvNumeros)
+        Me.Controls.Add(Me.btnNuevo)
+        Me.Controls.Add(Me.btnEditar)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.Label4)
@@ -151,6 +203,7 @@ Partial Class Form1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         CType(Me.dgvContactos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvNumeros, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -167,4 +220,8 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents btnGuardar As Button
     Friend WithEvents btnEliminar As Button
+    Friend WithEvents btnEditar As Button
+    Friend WithEvents btnNuevo As Button
+    Friend WithEvents dgvNumeros As DataGridView
+    Friend WithEvents Label5 As Label
 End Class

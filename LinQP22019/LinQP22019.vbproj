@@ -173,6 +173,7 @@
       <DependentUpon>ContactosDB.edmx</DependentUpon>
       <LastGenOutput>ContactosDB.vb</LastGenOutput>
     </Content>
+    <None Include="Resources\pencil.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
