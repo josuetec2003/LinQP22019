@@ -92,4 +92,16 @@
 
         DataAccess.cargarNumeros(dgvNumeros, idc)
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim nombre As String = dgvContactos.CurrentRow.Cells(1).Value
+        Dim apellido As String = dgvContactos.CurrentRow.Cells(2).Value
+
+        Dim nombre_completo As String = String.Format("{0} {1}", nombre, apellido)
+
+        With frmAgregarNumero
+            .lblContacto.Text = "Agregar numero a " + nombre_completo
+            .ShowDialog()
+        End With
+    End Sub
 End Class

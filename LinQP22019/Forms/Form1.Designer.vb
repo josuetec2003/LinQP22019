@@ -37,6 +37,7 @@ Partial Class Form1
         Me.btnNuevo = New System.Windows.Forms.Button()
         Me.dgvNumeros = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.dgvContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvNumeros, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -178,11 +179,22 @@ Partial Class Form1
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Numeros del contacto"
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
+        Me.Button1.Location = New System.Drawing.Point(643, 251)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(44, 35)
+        Me.Button1.TabIndex = 15
+        Me.Button1.Text = "+"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(699, 410)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dgvNumeros)
         Me.Controls.Add(Me.btnNuevo)
@@ -224,4 +236,5 @@ Partial Class Form1
     Friend WithEvents btnNuevo As Button
     Friend WithEvents dgvNumeros As DataGridView
     Friend WithEvents Label5 As Label
+    Friend WithEvents Button1 As Button
 End Class

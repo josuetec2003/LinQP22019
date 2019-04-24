@@ -4,6 +4,7 @@
 Public Class DataAccess
     Shared ctx As New ContactosDBEntities
 
+#Region "Formulario Contacto"
     Shared Sub cargarContactos(grid As DataGridView, Optional buscar As String = "")
         ' Consulta
         ' select * from Contacto
@@ -81,6 +82,21 @@ Public Class DataAccess
         grid.Columns(0).Visible = False
 
     End Sub
+#End Region
+
+#Region "Formulario Numero"
+
+    Shared Sub cargarOperadoras(cbo As ComboBox)
+        Dim data = From o In ctx.Operadoras
+                   Select o
+
+        cbo.DataSource = data.ToList()
+        cbo.DisplayMember = "Nombre"
+        cbo.ValueMember = "IdOperadora"
+        cbo.SelectedIndex = -1
+    End Sub
+
+#End Region
 
 
 

@@ -13,3 +13,4 @@
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.xml
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\bin\Debug\EntityFramework.SqlServer.xml
 \\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.Form1.resources
+\\Mac\Home\Documents\Visual Studio 2015\Projects\LinQP22019\LinQP22019\obj\Debug\LinQP22019.frmAgregarNumero.resources
