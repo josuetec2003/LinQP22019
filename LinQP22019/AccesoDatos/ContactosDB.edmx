@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ContactosDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ContactosDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contacto">
           <Key>
             <PropertyRef Name="IdContacto" />
@@ -13,6 +13,7 @@
           <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Apellido" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Numeros">
           <Key>
@@ -67,21 +68,10 @@
             <End Role="Numeros" EntitySet="Numeros" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ContactosDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Contacto">
-          <Key>
-            <PropertyRef Name="IdContacto" />
-          </Key>
-          <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellido" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Numeros" Relationship="Self.FK_Numeros_Contacto1" FromRole="Contacto" ToRole="Numeros" />
-        </EntityType>
         <EntityType Name="Numeros">
           <Key>
             <PropertyRef Name="IdNumero" />
@@ -90,8 +80,8 @@
           <Property Name="Numero" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
           <Property Name="IdOperadora" Type="Int32" />
           <Property Name="IdContacto" Type="Int32" />
-          <NavigationProperty Name="Contacto" Relationship="Self.FK_Numeros_Contacto1" FromRole="Numeros" ToRole="Contacto" />
           <NavigationProperty Name="Operadoras" Relationship="Self.FK_Numeros_Operadoras1" FromRole="Numeros" ToRole="Operadoras" />
+          <NavigationProperty Name="Contacto" Relationship="ContactosDBModel.FK_Numeros_Contacto1" FromRole="Numeros" ToRole="Contacto" />
         </EntityType>
         <EntityType Name="Operadoras">
           <Key>
@@ -101,18 +91,6 @@
           <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Numeros" Relationship="Self.FK_Numeros_Operadoras1" FromRole="Operadoras" ToRole="Numeros" />
         </EntityType>
-        <Association Name="FK_Numeros_Contacto1">
-          <End Role="Contacto" Type="Self.Contacto" Multiplicity="0..1" />
-          <End Role="Numeros" Type="Self.Numeros" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Contacto">
-              <PropertyRef Name="IdContacto" />
-            </Principal>
-            <Dependent Role="Numeros">
-              <PropertyRef Name="IdContacto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Numeros_Operadoras1">
           <End Role="Operadoras" Type="Self.Operadoras" Multiplicity="0..1" />
           <End Role="Numeros" Type="Self.Numeros" Multiplicity="*" />
@@ -126,34 +104,47 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ContactosDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Contacto" EntityType="Self.Contacto" />
           <EntitySet Name="Numeros" EntityType="Self.Numeros" />
           <EntitySet Name="Operadoras" EntityType="Self.Operadoras" />
-          <AssociationSet Name="FK_Numeros_Contacto1" Association="Self.FK_Numeros_Contacto1">
-            <End Role="Contacto" EntitySet="Contacto" />
-            <End Role="Numeros" EntitySet="Numeros" />
-          </AssociationSet>
           <AssociationSet Name="FK_Numeros_Operadoras1" Association="Self.FK_Numeros_Operadoras1">
             <End Role="Operadoras" EntitySet="Operadoras" />
             <End Role="Numeros" EntitySet="Numeros" />
           </AssociationSet>
+          <EntitySet Name="Contacto" EntityType="ContactosDBModel.Contacto" />
+          <AssociationSet Name="FK_Numeros_Contacto1" Association="ContactosDBModel.FK_Numeros_Contacto1">
+            <End Role="Contacto" EntitySet="Contacto" />
+            <End Role="Numeros" EntitySet="Numeros" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Contacto">
+          <Key>
+            <PropertyRef Name="IdContacto" />
+          </Key>
+          <Property Name="IdContacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Numeros" Relationship="ContactosDBModel.FK_Numeros_Contacto1" FromRole="Contacto" ToRole="Numeros" />
+        </EntityType>
+        <Association Name="FK_Numeros_Contacto1">
+          <End Type="ContactosDBModel.Contacto" Role="Contacto" Multiplicity="0..1" />
+          <End Type="ContactosDBModel.Numeros" Role="Numeros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contacto">
+              <PropertyRef Name="IdContacto" />
+            </Principal>
+            <Dependent Role="Numeros">
+              <PropertyRef Name="IdContacto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ContactosDBModelStoreContainer" CdmEntityContainer="ContactosDBEntities">
-          <EntitySetMapping Name="Contacto">
-            <EntityTypeMapping TypeName="ContactosDBModel.Contacto">
-              <MappingFragment StoreEntitySet="Contacto">
-                <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Numeros">
             <EntityTypeMapping TypeName="ContactosDBModel.Numeros">
               <MappingFragment StoreEntitySet="Numeros">
@@ -169,6 +160,17 @@
               <MappingFragment StoreEntitySet="Operadoras">
                 <ScalarProperty Name="IdOperadora" ColumnName="IdOperadora" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacto">
+            <EntityTypeMapping TypeName="ContactosDBModel.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

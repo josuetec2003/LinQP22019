@@ -22,7 +22,7 @@ Public Class DataAccess
 
         grid.DataSource = data
         grid.Columns(0).Visible = False
-        grid.Columns(4).Visible = False
+        'grid.Columns(4).Visible = False
 
 
         'Dim data = From c In ctx.Contacto
@@ -76,7 +76,7 @@ Public Class DataAccess
     Shared Sub cargarNumeros(grid As DataGridView, idc As Integer)
         Dim data = From nums In ctx.Numeros
                    Where nums.IdContacto = idc
-                   Select nums.IdContacto, nums.Numero, nums.Operadoras.Nombre
+                   Select nums.IdNumero, nums.Numero, nums.Operadoras.Nombre
 
         grid.DataSource = data.ToList()
         grid.Columns(0).Visible = False
@@ -94,6 +94,29 @@ Public Class DataAccess
         cbo.DisplayMember = "Nombre"
         cbo.ValueMember = "IdOperadora"
         cbo.SelectedIndex = -1
+    End Sub
+
+    Shared Function agregarNumero(num As Numeros) As Boolean
+        Try
+            ctx.Numeros.Add(num)
+            ctx.SaveChanges()
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    Shared Sub eliminarNumero(idn As Integer)
+        ' 1: Crear el objeto
+        Dim num = (From n In ctx.Numeros
+                   Where n.IdNumero = idn
+                   Select n).SingleOrDefault()
+
+        ' 2: Eliminar de memoria
+        ctx.Numeros.Remove(num)
+
+        ' 3: Guardar los cambios
+        ctx.SaveChanges()
     End Sub
 
 #End Region

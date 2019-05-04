@@ -22,8 +22,8 @@ Partial Public Class ContactosDBEntities
         Throw New UnintentionalCodeFirstException()
     End Sub
 
-    Public Overridable Property Contacto() As DbSet(Of Contacto)
     Public Overridable Property Numeros() As DbSet(Of Numeros)
     Public Overridable Property Operadoras() As DbSet(Of Operadoras)
+    Public Overridable Property Contacto() As DbSet(Of Contacto)
 
 End Class

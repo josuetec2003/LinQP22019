@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ContactosDBModelStoreContainer" CdmEntityContainer="ContactosDBEntities">
-    <EntitySetMapping Name="Contacto">
-      <EntityTypeMapping TypeName="ContactosDBModel.Contacto">
-        <MappingFragment StoreEntitySet="Contacto">
-          <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Numeros">
       <EntityTypeMapping TypeName="ContactosDBModel.Numeros">
         <MappingFragment StoreEntitySet="Numeros">
@@ -26,6 +16,17 @@
         <MappingFragment StoreEntitySet="Operadoras">
           <ScalarProperty Name="IdOperadora" ColumnName="IdOperadora" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacto">
+      <EntityTypeMapping TypeName="ContactosDBModel.Contacto">
+        <MappingFragment StoreEntitySet="Contacto">
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdContacto" ColumnName="IdContacto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

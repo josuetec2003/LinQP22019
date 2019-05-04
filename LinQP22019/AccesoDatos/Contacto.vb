@@ -15,6 +15,7 @@ Partial Public Class Contacto
     Public Property Nombre As String
     Public Property Apellido As String
     Public Property Direccion As String
+    Public Property Correo As String
 
     Public Overridable Property Numeros As ICollection(Of Numeros) = New HashSet(Of Numeros)
 

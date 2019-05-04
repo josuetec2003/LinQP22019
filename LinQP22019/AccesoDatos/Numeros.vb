@@ -16,7 +16,7 @@ Partial Public Class Numeros
     Public Property IdOperadora As Nullable(Of Integer)
     Public Property IdContacto As Nullable(Of Integer)
 
-    Public Overridable Property Contacto As Contacto
     Public Overridable Property Operadoras As Operadoras
+    Public Overridable Property Contacto As Contacto
 
 End Class

@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿Imports System.Net
+Imports System.Net.Mail
+
+Public Class Form1
     ' Para almacenar el id del contacto y que sirva en los todos los bloques de
     ' codigo del Form1
     Dim id_contacto As Integer
@@ -96,12 +99,57 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim nombre As String = dgvContactos.CurrentRow.Cells(1).Value
         Dim apellido As String = dgvContactos.CurrentRow.Cells(2).Value
+        Dim ID As Integer = dgvContactos.CurrentRow.Cells(0).Value
 
         Dim nombre_completo As String = String.Format("{0} {1}", nombre, apellido)
 
         With frmAgregarNumero
             .lblContacto.Text = "Agregar numero a " + nombre_completo
+            .IdContacto = ID
             .ShowDialog()
         End With
+    End Sub
+
+    Private Sub btnEliminarNumero_Click(sender As Object, e As EventArgs) Handles btnEliminarNumero.Click
+        ' Confirmar si se eliminar el numero
+
+        ' Tomar el ID del numero y del contacto
+        Dim ID As Integer = dgvNumeros.CurrentRow.Cells(0).Value
+        Dim idc As Integer = dgvContactos.CurrentRow.Cells(0).Value
+
+        DataAccess.eliminarNumero(ID)
+        DataAccess.cargarNumeros(dgvNumeros, idc)
+    End Sub
+
+    Private Sub btnEnviarCorreo_Click(sender As Object, e As EventArgs) Handles btnEnviarCorreo.Click
+        Dim para As String = dgvContactos.CurrentRow.Cells(4).Value
+
+        If para = "" Then
+            MsgBox("Este contacto no tiene direccion de correo")
+        Else
+            Dim cuerpo As String = InputBox("Escriba el texto del correo")
+
+            If cuerpo <> "" Then
+                Using mensaje As New MailMessage("programacion.uph@gmail.com", para, "Correo de Programacion 4", cuerpo)
+                    mensaje.BodyEncoding = System.Text.Encoding.UTF8
+
+                    Using enviador As New SmtpClient("smtp.gmail.com", 587)
+                        enviador.Credentials = New NetworkCredential("programacion.uph@gmail.com", "123abcd.")
+                        enviador.EnableSsl = True
+
+                        Try
+                            enviador.Send(mensaje)
+                            MsgBox("El correo ha sido enviado!")
+                        Catch ex As Exception
+                            MsgBox(ex.Message)
+                        End Try
+
+                    End Using
+                End Using
+            End If
+
+
+        End If
+
     End Sub
 End Class

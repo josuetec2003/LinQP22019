@@ -8,6 +8,7 @@
     <Property Name="Nombre" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="Apellido" Type="nvarchar" MaxLength="25" Nullable="false" />
     <Property Name="Direccion" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Numeros">
     <Key>

@@ -38,6 +38,8 @@ Partial Class Form1
         Me.dgvNumeros = New System.Windows.Forms.DataGridView()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnEliminarNumero = New System.Windows.Forms.Button()
+        Me.btnEnviarCorreo = New System.Windows.Forms.Button()
         CType(Me.dgvContactos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvNumeros, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -189,11 +191,32 @@ Partial Class Form1
         Me.Button1.Text = "+"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'btnEliminarNumero
+        '
+        Me.btnEliminarNumero.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!)
+        Me.btnEliminarNumero.Location = New System.Drawing.Point(643, 292)
+        Me.btnEliminarNumero.Name = "btnEliminarNumero"
+        Me.btnEliminarNumero.Size = New System.Drawing.Size(44, 35)
+        Me.btnEliminarNumero.TabIndex = 16
+        Me.btnEliminarNumero.Text = "-"
+        Me.btnEliminarNumero.UseVisualStyleBackColor = True
+        '
+        'btnEnviarCorreo
+        '
+        Me.btnEnviarCorreo.Location = New System.Drawing.Point(643, 143)
+        Me.btnEnviarCorreo.Name = "btnEnviarCorreo"
+        Me.btnEnviarCorreo.Size = New System.Drawing.Size(44, 35)
+        Me.btnEnviarCorreo.TabIndex = 17
+        Me.btnEnviarCorreo.Text = "C"
+        Me.btnEnviarCorreo.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(699, 410)
+        Me.Controls.Add(Me.btnEnviarCorreo)
+        Me.Controls.Add(Me.btnEliminarNumero)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.dgvNumeros)
@@ -234,7 +257,9 @@ Partial Class Form1
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnNuevo As Button
-    Friend WithEvents dgvNumeros As DataGridView
     Friend WithEvents Label5 As Label
     Friend WithEvents Button1 As Button
+    Public WithEvents dgvNumeros As DataGridView
+    Friend WithEvents btnEliminarNumero As Button
+    Friend WithEvents btnEnviarCorreo As Button
 End Class
